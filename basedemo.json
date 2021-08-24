@@ -1,0 +1,35 @@
+{
+	"name": "basedemo",
+	"retry": 3,
+	"envs": [
+		{
+			"name":"test",
+			"init": "@shell(date +%s)",
+			"scope": "private"
+		},
+		{
+			"name":"test1",
+			"init": "@shell(date +%s)",
+			"scope": "public"
+		}
+	],
+	"tasks": [
+		{
+			"name": "d.test1",
+			"cmd": "echo d.test1",
+			"retry": 1,
+			"depends":[]
+		},
+		{
+			"name": "d.test2",
+			"cmd": "echo d.test2",
+			"retry": 1,
+			"depends":[]
+		}
+	],
+	"logger": {
+	},
+	"persistence":{
+	}
+}
+

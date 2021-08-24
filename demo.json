@@ -1,0 +1,41 @@
+{
+	"extends": ["basedemo"],
+	"retry": 3,
+	"onfailed": "continue",
+	"properties": {
+		"key": "va"
+	},
+	"envs": [
+		{
+			"name":"test",
+			"scope": "private",
+			"value": "haha"
+		},
+		{
+			"name":"test1",
+			"scope": "public", 
+			"value": "@shell:date +%s"
+		}
+	],
+	"tasks": [
+		{
+			"name": "task1",
+			"cmd": "ls",
+			"cmd": "echo task1; env2=testtest",
+			"retry": 1,
+			"depends":[],
+			"exports":["env1", "env2"]
+		},
+		{
+			"name": "task2",
+			"cmd": "echo task2",
+			"retry": 1,
+			"exports":["env1", "env2"],
+			"depends":["task1"]
+		}
+	],
+	"logger": {
+	},
+	"persistence":{
+	}
+}
